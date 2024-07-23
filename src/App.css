@@ -8,6 +8,7 @@
 }
 .date {
   padding-top: 25px;
+  padding-bottom: 25px;
 }
 
 input {
@@ -18,7 +19,7 @@ input {
   height: 20px;
 }
 
-button {
+.btn {
   height: 25px;
   width: 25px;
 }

@@ -15,6 +15,11 @@ const Counter = () => {
   const date = new Date();
   date.setDate(date.getDate() + count);
 
+  function handleReset() {
+    setCount(0);
+    setStep(1);
+  }
+
   return (
     <div className="counter">
       <div>
@@ -28,14 +33,18 @@ const Counter = () => {
         />
       </div>
       <div>
-        <button onClick={() => setCount(count - step)}>-</button>
+        <button className="btn" onClick={() => setCount(count - step)}>
+          -
+        </button>
         <input
           type="number"
           className="countbar"
           value={count}
           onChange={(e) => setCount(Number(e.target.value))}
         />
-        <button onClick={() => setCount(count + step)}>+</button>
+        <button className="btn" onClick={() => setCount(count + step)}>
+          +
+        </button>
       </div>
 
       <div className="date">
@@ -43,6 +52,14 @@ const Counter = () => {
         <span>{count >= 1 ? `${count} days from today is ` : ""}</span>
         <span>{count < 0 ? `${Math.abs(count)} days ago was ` : ""}</span>
         <span>{date.toDateString()}</span>
+      </div>
+
+      <div>
+        {count >= 1 || step > 1 ? (
+          <button onClick={handleReset}>Reset</button>
+        ) : (
+          ""
+        )}
       </div>
     </div>
   );
